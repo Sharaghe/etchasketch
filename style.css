@@ -22,6 +22,6 @@ body{
     background: white;
 }
 
-.grid-item:hover{
+.grid-item:hover, .red-bg{
     background: #ff0000;
 }
