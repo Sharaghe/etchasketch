@@ -1,0 +1,27 @@
+body{
+    background: #eee;
+    text-align: center;
+}
+
+.main-grid{
+    background: white;
+    box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.2);
+    margin: 50px auto;
+    display: inline-grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    background: #CCC;
+    grid-gap: 1px;
+    width: 500px;
+    height: 500px;
+}
+
+.grid-item {
+    height: 100%;
+    width: 100%;
+    background: white;
+}
+
+.grid-item:hover{
+    background: #ff0000;
+}
