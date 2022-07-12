@@ -1,5 +1,6 @@
 const gridContainer = document.querySelector('.main-grid');
 let clickStarted = false;
+window.addEventListener('mouseup', () => clickStarted = false);
 
 function createGrid(rows, columns){
 
@@ -8,7 +9,6 @@ function createGrid(rows, columns){
             let div = document.createElement("div");
 
             div.addEventListener('mousedown', () => { clickStarted = true; makeRed(div) })
-            div.addEventListener('mouseup', () => clickStarted = false)
             div.addEventListener('mouseover', () => { if(clickStarted) makeRed(div) })
 
             div.classList.add('grid-item');
