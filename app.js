@@ -1,11 +1,15 @@
 const gridContainer = document.querySelector('.main-grid');
 const dimensionButton = document.querySelector('.change-dimensions');
-let dimensions;
+const rbButton = document.querySelector('.rainbow-mode');
+const rbButtonStatusIndicator = document.querySelector('.rainbow-mode .rb-status-indicator');
 
+let dimensions;
+let isRainbowModeOn = false;
 let clickStarted = false;
 
 window.addEventListener('mouseup', () => clickStarted = false);
 dimensionButton.addEventListener('click', changeDimensions);
+rbButton.addEventListener('click', toggleRainbowMode);
 
 function changeDimensions(){
     let validInput = false;
@@ -42,8 +46,33 @@ function createGrid(rows, columns){
 
 }
 
+function toggleRainbowMode(){
+    if(isRainbowModeOn){
+        rbButtonStatusIndicator.classList.remove("on");
+        rbButtonStatusIndicator.classList.add("off");
+        rbButtonStatusIndicator.textContent = "off";
+    } else {
+        rbButtonStatusIndicator.classList.remove("off");
+        rbButtonStatusIndicator.classList.add("on");
+        rbButtonStatusIndicator.textContent = "on";
+    }
+    isRainbowModeOn = !isRainbowModeOn;
+}
+
 function makeRed(clickedDiv){
-    clickedDiv.classList.add("red-bg");
+    clickedDiv.classList.remove('red-bg');
+    clickedDiv.style.removeProperty('background');
+    
+    if(isRainbowModeOn) {
+        let randomColor = `rgb(${randomColorValue()},${randomColorValue()},${randomColorValue()})`;
+        clickedDiv.style.background = `${randomColor}`;
+    } else {
+        clickedDiv.classList.add("red-bg");
+    }
+}
+
+function randomColorValue(){
+    return Math.floor(Math.random() * 256);
 }
 
 
